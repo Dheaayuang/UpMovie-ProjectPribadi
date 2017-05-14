@@ -84,15 +84,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_camera) {
             fragment = new HomeFragment();
-            setTitle("Home");
+            setTitle("Now Playing");
         } else if (id == R.id.nav_gallery) {
             fragment = new PopularFragment();
-            setTitle("Popular");
-
+            setTitle(" Most Popular");
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_slideshow) {
-
+            fragment = new TopFragment();
+            setTitle("Top Rated");
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitNow();

@@ -15,41 +15,41 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.DetailActivity;
-import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.PopularFragment;
 import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.R;
+import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.TopFragment;
 import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.model.Results;
 
 /**
- * Created by Agnes-PC on 13/05/2017.
+ * Created by Agnes-PC on 14/05/2017.
  */
 
-public class MyPopular extends RecyclerView.Adapter<MyPopular.MyViewHolder> {
+public class MyTop extends RecyclerView.Adapter<MyTop.MyViewHolder> {
     public String url = "https://image.tmdb.org/t/p/w500";
     public String image;
     ArrayList<Results> mlist;
-    PopularFragment popularFragment;
+    TopFragment topFragment;
     Context context;
     private int lastposition = -1;
 
-    public MyPopular(PopularFragment popularFragment, ArrayList<Results> mlist, Context context) {
+    public MyTop(TopFragment topFragment, ArrayList<Results> mlist, Context context) {
         this.mlist = mlist;
-        this.popularFragment = popularFragment;
+        this.topFragment = topFragment;
         this.context = context;
     }
 
     @Override
-    public MyPopular.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public MyTop.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                 int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_item, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        MyViewHolder vh = new MyViewHolder(v);
+        MyTop.MyViewHolder vh = new MyTop.MyViewHolder(v);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(MyPopular.MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyTop.MyViewHolder holder, int position) {
         final Results results = mlist.get(position);
         holder.tvName.setText(results.title);
         holder.tvDesc.setText(results.overview);
@@ -75,7 +75,6 @@ public class MyPopular extends RecyclerView.Adapter<MyPopular.MyViewHolder> {
             }
         });
     }
-
 
     @Override
     public int getItemCount() {

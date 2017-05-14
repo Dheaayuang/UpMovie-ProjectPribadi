@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.adapter.MyAdapter;
+import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.adapter.MyTop;
 import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.model.ResultRespons;
 import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.model.Results;
 import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.service.GsonGetRequest;
@@ -26,20 +26,22 @@ import id.sch.smktelkom_mlg.privateassignment.xirpl312.upmovie.service.VolleySin
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class TopFragment extends Fragment {
+
+
     ArrayList<Results> mlist = new ArrayList<>();
-    MyAdapter myAdapter;
+    MyTop myTop;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_top, container, false);
 
-        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_home);
+        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_top);
         rv.setHasFixedSize(true);
-        myAdapter = new MyAdapter(this, mlist, getContext());
-        rv.setAdapter(myAdapter);
+        myTop = new MyTop(this, mlist, getContext());
+        rv.setAdapter(myTop);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
@@ -50,7 +52,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void downloadDataResource() {
-        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=cc75981bfea7ffbfc93767470c7c0f28&language=en-US&page=1";
+        String url = "https://api.themoviedb.org/3/movie/top_rated?api_key=cc75981bfea7ffbfc93767470c7c0f28&language=en-US&page=1";
 
         GsonGetRequest<ResultRespons> myRequest = new GsonGetRequest<ResultRespons>
                 (url, ResultRespons.class, null, new Response.Listener<ResultRespons>() {
@@ -60,7 +62,7 @@ public class HomeFragment extends Fragment {
                         Log.d("FLOW", "onResponse: " + (new Gson().toJson(response)));
                         //fillColor(response.results);
                         mlist.addAll(response.results);
-                        myAdapter.notifyDataSetChanged();
+                        myTop.notifyDataSetChanged();
                     }
 
                 }, new Response.ErrorListener() {
@@ -77,4 +79,5 @@ public class HomeFragment extends Fragment {
     //    for (int i = 0; i < results.size(); i++)
     //        results.get(i).color = ColorUtil.getRandomColor();
     //}
+
 }
