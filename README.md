@@ -10,6 +10,7 @@
 SMK Telkom Malang
 ### Alamat API yang digunakan pada Aplikasi :  https://www.themoviedb.org/documentation/api
 ### Jenis Navigasi yang digunakan pada Aplikasi : Navigation Drawer
+### Local Database :SQLite Dasar
 ### Deskripsi singkat
 Aplikasi yang menyajikan berbagai film, baik itu berdasarkan now playing atau film yang sedang diputar pada saat ini di bioskop. Most Popular
 atau Film yang paling digemari pada saat ini. Top Rated atau Film film yang paling favorite. Dalam aplikasi ini terdapat detail dari masing-masing
